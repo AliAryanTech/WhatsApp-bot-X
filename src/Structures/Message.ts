@@ -156,7 +156,7 @@ export class Message {
                           externalAdReply
                       }
                     : undefined,
-                footer: options.sections?.length ? `🤍 ${this.client.config.name} 🖤` : undefined,
+                footer: options.sections?.length ? `Bot` : undefined,
                 sections: options.sections,
                 title: options.title,
                 buttonText: options.buttonText
