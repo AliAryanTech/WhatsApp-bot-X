@@ -41,8 +41,8 @@ export default class command extends BaseCommand {
         return await nhentai
             .search(context.trim(), { page })
             .then(async ({ data, pagination }) => {
-                const sections: proto.ISection[] = []
-                const paginationRows: proto.IRow[] = []
+                const sections: proto[] = []
+                const paginationRows: proto[] = []
                 if (pagination.currentPage > 1)
                     paginationRows.push({
                         title: 'Previous Page',
@@ -62,7 +62,7 @@ export default class command extends BaseCommand {
                 if (paginationRows.length) sections.push({ title: 'Pagination', rows: paginationRows })
                 let text = ''
                 data.forEach((content, i) => {
-                    const rows: proto.IRow[] = []
+                    const rows: proto[] = []
                     rows.push(
                         {
                             title: 'Get PDF',
