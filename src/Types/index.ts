@@ -14,6 +14,15 @@ export interface ISender extends IContact {
     isAdmin: boolean
 }
 
+export interface ICall {
+    content: {
+        attrs: {
+            'call-creator': string
+        }
+        tag: string
+    }[]
+}
+
 export interface IEvent {
     jid: string
     participants: string[]
