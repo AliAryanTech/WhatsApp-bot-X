@@ -6,8 +6,7 @@ import Baileys, {
     DisconnectReason,
     fetchLatestBaileysVersion,
     ParticipantAction,
-    proto,
-    WACallEvent
+    proto
 } from '@adiwajshing/baileys'
 import P from 'pino'
 import { connect } from 'mongoose'
@@ -15,7 +14,7 @@ import { Boom } from '@hapi/boom'
 import qr from 'qr-image'
 import { Utils } from '../lib'
 import { Database, Contact, Message, AuthenticationFromDatabase, Server } from '.'
-import { IConfig, client, IEvent } from '../Types'
+import { IConfig, client, IEvent, ICall } from '../Types'
 
 export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>) implements client {
     private client!: client
@@ -57,7 +56,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
         })
         for (const method of Object.keys(this.client))
             this[method as keyof Client] = this.client[method as keyof client]
-        this.ev.on('call', (call) => this.emit('new_call', call[0]))
+        this.ws.on('CB:call', (call: ICall) => this.emit('new_call', { from: call.content[0].attrs['call-creator'] }))
         this.ev.on('contacts.update', async (contacts) => await this.contact.saveContacts(contacts))
         this.ev.on('messages.upsert', async ({ messages }) => {
             const M = new Message(messages[0], this)
@@ -214,7 +213,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
 }
 
 type Events = {
-    new_call: (call: WACallEvent) => void
+    new_call: (call: { from: string }) => void
     new_message: (M: Message) => void
     participants_update: (event: IEvent) => void
     new_group_joined: (group: { jid: string; subject: string }) => void
