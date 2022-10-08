@@ -1,5 +1,5 @@
 import spotify from 'spotifydl-x'
-import TrackDetails from 'spotifydl-core/dist/lib/details/Track'
+import TrackDetails from 'spotifydl-x/dist/lib/details/Track'
 import { Utils } from '.'
 
 export class Spotify extends spotify {
