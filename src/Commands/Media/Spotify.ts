@@ -1,4 +1,4 @@
-import TrackDetails from 'spotifydl-core/dist/lib/details/Track'
+import TrackDetails from 'spotifydl-x/dist/lib/details/Track'
 import { Spotify } from '../../lib'
 import { Command, BaseCommand, Message } from '../../Structures'
 
