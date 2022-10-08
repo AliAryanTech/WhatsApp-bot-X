@@ -185,7 +185,6 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
     public sendMessageAck!: client['sendMessageAck']
     public sendNode!: client['sendNode']
     public sendRawMessage!: client['sendRawMessage']
-    public sendReadReceipt!: client['sendReadReceipt']
     public sendRetryRequest!: client['sendRetryRequest']
     public sendMessage!: client['sendMessage']
     public sendPresenceUpdate!: client['sendPresenceUpdate']
