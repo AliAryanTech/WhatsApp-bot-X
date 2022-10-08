@@ -16,7 +16,7 @@ import { Utils } from '../lib'
 import { Database, Contact, Message, AuthenticationFromDatabase, Server } from '.'
 import { IConfig, client, IEvent, ICall } from '../Types'
 
-export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>) implements client {
+export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>) {
     private client!: client
     constructor() {
         super()
