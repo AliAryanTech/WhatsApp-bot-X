@@ -120,7 +120,7 @@ export class Message {
             .catch(() => this)
     }
 
-    get stubType(): proto.WebMessageInfo.WebMessageInfoStubType | undefined | null {
+    get stubType(): proto.WebMessageInfo.WebMessageInfoStubType | null | undefined {
         return this.M.messageStubType
     }
 
